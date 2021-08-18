@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Homework-3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../style/app.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <form class="text-center border border-light p-5">
+        <p class="h4 mb-4">Temperature Convertion</p><br>
+        <div class="h4 mb-12">
+          <select name="from" id="from" onchange="select()">
+            <option value="cel">Celcius</option>
+            <option value="far">Farenheit</option>
+            <option value="rea">Reamur</option>
+          </select>
+          to
+          <select name="to" id="to" onchange="select()">
+            <option value="cel">Celcius</option>
+            <option value="far">Farenheit</option>
+            <option value="rea">Reamur</option>
+          </select>
+        </div>
+        <input
+          type="number"
+          name="kmh"
+          id="num1"
+          class="form-control mb-4"
+          placeholder="temperature to be treated"
+          onkeypress="validate(event)"
+          onkeyup="conv()"
+        />
+        <p class="h6 mb-4">=</p>
+        <input
+          type="number"
+          id="result"
+          class="form-control mb-4"
+          placeholder="result"
+          disabled
+        />
+      </form>
+      Change Background Color : 
+      <input class="form-control" id="color" />
+      <button
+        type="button"
+        class="btn btn-light"
+        onclick="change()"
+      >
+        Change
+      </button>*Boleh warna apa saja, termasuk kode RGB
+    </div>
+  </body>
+  <script src="conversion.js"></script>
+  <script>
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === "paste") {
+        key = event.clipboardData.getData("text/plain");
+      } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]|\./;
+      if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+    function select() {
+      document.getElementById("num1").value = "";
+      document.getElementById("result").value = "";
+    }
+
+    const convert = new Convert();
+    function conv() {
+      if (document.getElementById("from").value == "cel") {
+        const res = convert.fromCelcius(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+      if (document.getElementById("from").value == "rea") {
+        const res = convert.fromReamur(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+      if (document.getElementById("from").value == "far") {
+        const res = convert.fromFarenheit(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+    }
+    function change() {
+      document.body.style.backgroundColor =
+        document.getElementById("color").value;
+    }
+  </script>
+  <footer>
+		&copy; <i>Ahmad Nursidik Dinar 2021</i>
+	</footer>
+</html>

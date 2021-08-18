@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital@0;1&display=swap');
+
+body {
+    background-color: cornsilk;
+}
+
+.container {
+    font-family: 'STIX Two Text', serif;
+    width: 80%;
+    margin-top: 5%;
+    color: white;
+    background-color: #47c2ff;
+}
+
+footer{
+    font-family: 'STIX Two Text', serif;
+	background-color: #47c2ff;
+    margin-top: 7%;
+	padding: 20px;
+	text-align: center;
+	color: white;
+}
