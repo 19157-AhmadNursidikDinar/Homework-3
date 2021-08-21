@@ -1,0 +1,15 @@
+{
+  "name": "pages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "conversion.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "D": "^1.0.0",
+    "jest": "^27.0.6"
+  }
+}
